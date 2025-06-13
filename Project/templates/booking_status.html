@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Approved Bookings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <header class="bg-sky-900 text-white p-6">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+        <h1 class="text-3xl font-bold">College Resource Booking System</h1>
+        <nav class="mt-4 md:mt-0 flex gap-6 text-lg font-medium">
+            <a href="/home1" class="hover:text-sky-300 transition duration-300">Home</a>
+            <a href="/resources" class="hover:text-sky-300 transition duration-300">Resources</a>
+            <a href="/bookresources" class="hover:text-sky-300 transition duration-300">Book Now</a>
+            <a href="/booking_status" class="hover:text-sky-300 transition duration-300">My Bookings</a>
+           
+        </nav>
+    </div>
+</header>
+    <div class="max-w-7xl mx-auto p-6">
+        <h1 class="text-3xl font-bold text-center text-white bg-blue-900 py-4 rounded-t-md">
+            My Approved Bookings
+        </h1>
+
+        <div class="bg-white shadow-md rounded-b-md overflow-x-auto">
+            {% if bookings %}
+                <table class="min-w-full table-auto">
+                    <thead class="bg-blue-600 text-white">
+                        <tr>
+                            <th class="px-4 py-2 text-left">Student</th>
+                            <th class="px-4 py-2 text-left">Email</th>
+                            <th class="px-4 py-2 text-left">Resource</th>
+                            <th class="px-4 py-2 text-left">Date</th>
+                            <th class="px-4 py-2 text-left">Start Time</th>
+                            <th class="px-4 py-2 text-left">End Time</th>
+                            <th class="px-4 py-2 text-left">Reason</th>
+                            <th class="px-4 py-2 text-left">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                        {% for booking in bookings %}
+                            <tr class="border-t">
+                                <td class="px-4 py-2">{{ booking.student_name }}</td>
+                                <td class="px-4 py-2">{{ booking.email }}</td>
+                                <td class="px-4 py-2">{{ booking.resource_name }}</td>
+                                <td class="px-4 py-2">{{ booking.date }}</td>
+                                <td class="px-4 py-2">{{ booking.start_time }}</td>
+                                <td class="px-4 py-2">{{ booking.end_time }}</td>
+                                <td class="px-4 py-2">{{ booking.reason }}</td>
+                                <td class="px-4 py-2 text-green-600 font-semibold">{{ booking.status }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="p-4 text-gray-600">No approved bookings found.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

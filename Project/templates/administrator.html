@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - College Resource Booking</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 font-sans">
+    <header class="bg-sky-900 text-white p-6">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+        <h1 class="text-3xl font-bold">College Resource Booking System</h1>
+        <nav class="mt-4 md:mt-0 flex gap-6 text-lg font-medium">
+            <a href="/home1" class="hover:text-sky-300 transition duration-300">Home</a>
+            <a href="/resourceS" class="hover:text-sky-300 transition duration-300">Resources</a>
+            <a href="/bookresources" class="hover:text-sky-300 transition duration-300">Book Now</a>
+            <a href="/booking_status" class="hover:text-sky-300 transition duration-300">My Bookings</a>
+            <a href="/admin" class="hover:text-sky-300 transition duration-300">Admin</a>
+        </nav>
+    </div>
+</header>
+
+    <main class="container mx-auto p-6">
+        <h2 class="text-2xl font-bold mb-4">Admin Dashboard</h2>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            {% if bookings %}
+                <table class="w-full border-collapse">
+                    <tr class="bg-gray-200">
+                        <th class="border p-2">Resource</th>
+                        <th class="border p-2">Name</th>
+                        <th class="border p-2">Email</th>
+                        <th class="border p-2">Date</th>
+                        <th class="border p-2">Time</th>
+                        <th class="border p-2">Reason</th>
+                        <th class="border p-2">Status</th>
+                        <th class="border p-2">Action</th>
+                    </tr>
+                    {% for booking in bookings %}
+                        <tr>
+                            <td class="border p-2">{{ booking['resource_name'] }}</td>
+                            <td class="border p-2">{{ booking['student_name'] }}</td>
+                            <td class="border p-2">{{ booking['email'] }}</td>
+                            <td class="border p-2">{{ booking['date'] }}</td>
+                            <td class="border p-2">{{ booking['start_time'] }} - {{ booking['end_time'] }}</td>
+                            <td class="border p-2">{{ booking['reason'] or 'N/A' }}</td>
+                            <td class="border p-2">{{ booking['status'] }}</td>
+                            <td class="border p-2">
+                                <form method="POST">
+                                    <input type="hidden" name="booking_id" value="{{ booking['booking_id'] }}">
+                                    <select name="status" class="p-1 border rounded">
+                                        <option value="Pending" {% if booking['status'] == 'Pending' %}selected{% endif %}>Pending</option>
+                                        <option value="Approved" {% if booking['status'] == 'Approved' %}selected{% endif %}>Approved</option>
+                                        <option value="Rejected" {% if booking['status'] == 'Rejected' %}selected{% endif %}>Rejected</option>
+
+                                    </select>
+                                    <button type="submit" class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700">Update</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <p>No bookings to review.</p>
+            {% endif %}
+        </div>
+    </main>
+    <footer class="bg-gray-800 text-white p-4 text-center">
+        <p>© 2025 College Resource Booking System. All rights reserved.</p>
+        <CENter><P>ALAGAPPA UNIVERSITY</P></CENter>
+    </footer>
+</body>
+</html>

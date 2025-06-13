@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resources - College Resource Booking</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .resource-scroll {
+      max-height: 500px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+    .resource-scroll::-webkit-scrollbar {
+      width: 8px;
+    }
+    .resource-scroll::-webkit-scrollbar-thumb {
+      background-color: rgba(100, 100, 255, 0.4);
+      border-radius: 5px;
+    }
+
+    /* 🔥 Click Button Styles */
+    .book-btn {
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border: none;
+      border-radius: 9999px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-btn::before {
+      content: "💥🔥";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      font-size: 1.2rem;
+      opacity: 0;
+    }
+
+    .book-btn:active::before {
+      animation: explode 0.5s ease forwards;
+      opacity: 1;
+    }
+
+    .book-btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #2563eb, #60a5fa);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+    }
+
+    @keyframes explode {
+      0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.5) rotate(180deg);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen text-gray-800">
+
+  <header class="bg-sky-900 text-white p-6">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+      <h1 class="text-3xl font-bold">College Resource Booking System</h1>
+      <nav class="mt-4 md:mt-0 flex gap-6 text-lg font-medium">
+        <a href="/home1" class="hover:text-sky-300 transition duration-300">Home</a>
+        <a href="/resources" class="hover:text-sky-300 transition duration-300">Resources</a>
+        <a href="/bookresources" class="hover:text-sky-300 transition duration-300">Book Now</a>
+        <a href="/booking_status" class="hover:text-sky-300 transition duration-300">My Bookings</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-10">
+    <h2 class="text-3xl font-semibold mb-6 text-center text-blue-800">Available Resources</h2>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 resource-scroll p-2 bg-white/60 rounded-xl shadow-inner">
+
+      <!-- Resource Cards -->
+      <!-- Repeat this format for each resource -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-2xl transition duration-300 transform hover:scale-105">
+        <h3 class="text-xl font-bold text-sky-900 mb-2">Football Ground</h3>
+        <p class="text-gray-600"><strong>Resource Id:</strong> 1</p>
+        <p class="text-gray-600"><strong>Type:</strong> Sports</p>
+        <p class="text-gray-600"><strong>Location:</strong> Sports Complex</p>
+        <p class="text-gray-600 mt-2">Full-sized grass field with goalposts and seating.</p>
+        <center><a href="/bookresources?resource_id=1"><button class="book-btn mt-4">Click</button></a></center>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-2xl transition duration-300 transform hover:scale-105">
+        <h3 class="text-xl font-bold text-sky-900 mb-2">Cricket Ground</h3>
+        <p class="text-gray-600"><strong>Resource Id:</strong> 2</p>
+        <p class="text-gray-600"><strong>Type:</strong> Sports</p>
+        <p class="text-gray-600"><strong>Location:</strong> Near Hostel Block</p>
+        <p class="text-gray-600 mt-2">Greenish pitch.</p><br>
+        <center><a href="/bookresources?resource_id=2"><button class="book-btn mt-4">Click</button></a></center>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-2xl transition duration-300 transform hover:scale-105">
+        <h3 class="text-xl font-bold text-sky-900 mb-2">Volleyball Ground</h3>
+        <p class="text-gray-600"><strong>Resource Id:</strong> 3</p>
+        <p class="text-gray-600"><strong>Type:</strong> Sports</p>
+        <p class="text-gray-600"><strong>Location:</strong> Near Hostel Block</p>
+        <p class="text-gray-600 mt-2">Beach sand and red sand ground.</p><br>
+        <center><a href="/bookresources?resource_id=3"><button class="book-btn mt-4">Click</button></a></center>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-2xl transition duration-300 transform hover:scale-105">
+        <h3 class="text-xl font-bold text-sky-900 mb-2">Basketball Court</h3>
+        <p class="text-gray-600"><strong>Resource Id:</strong> 4</p>
+        <p class="text-gray-600"><strong>Type:</strong> Sports</p>
+        <p class="text-gray-600"><strong>Location:</strong> Near Hostel Block</p>
+        <p class="text-gray-600 mt-2">Outdoor court with synthetic flooring and lighting.</p><br>
+        <center><a href="/bookresources?resource_id=4"><button class="book-btn mt-4">Click</button></a></center>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-2xl transition duration-300 transform hover:scale-105">
+        <h3 class="text-xl font-bold text-sky-900 mb-2">Computer Lab</h3>
+        <p class="text-gray-600"><strong>Resource Id:</strong> 5</p>
+        <p class="text-gray-600"><strong>Type:</strong> Lab</p>
+        <p class="text-gray-600"><strong>Location:</strong> Block C, Room 204</p>
+        <p class="text-gray-600 mt-2">Equipped with 70+ high-performance systems.</p><br>
+        <center><a href="/bookresources?resource_id=5"><button class="book-btn mt-4">Click</button></a></center>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-2xl transition duration-300 transform hover:scale-105">
+        <h3 class="text-xl font-bold text-sky-900 mb-2">Physics Lab</h3>
+        <p class="text-gray-600"><strong>Resource Id:</strong> 6</p>
+        <p class="text-gray-600"><strong>Type:</strong> Science Lab</p>
+        <p class="text-gray-600"><strong>Location:</strong> Science Block - Room 101</p>
+        <p class="text-gray-600 mt-2">Fully equipped with optics, mechanics, and electronics kits.</p><br>
+        <center><a href="/bookresources?resource_id=6"><button class="book-btn mt-4">Click</button></a></center>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-2xl transition duration-300 transform hover:scale-105">
+        <h3 class="text-xl font-bold text-sky-900 mb-2">Chemistry Lab</h3>
+        <p class="text-gray-600"><strong>Resource Id:</strong> 7</p>
+        <p class="text-gray-600"><strong>Type:</strong> Science Lab</p>
+        <p class="text-gray-600"><strong>Location:</strong> Science Block - Room 102</p>
+        <p class="text-gray-600 mt-2">Modern lab with all chemical apparatus and safety tools.</p><br>
+        <center><a href="/bookresources?resource_id=7"><button class="book-btn mt-4">Click</button></a></center>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-2xl transition duration-300 transform hover:scale-105">
+        <h3 class="text-xl font-bold text-sky-900 mb-2">Auditorium</h3>
+        <p class="text-gray-600"><strong>Resource Id:</strong> 8</p>
+        <p class="text-gray-600"><strong>Type:</strong> Event Space</p>
+        <p class="text-gray-600"><strong>Location:</strong> Main Building - Ground Floor</p>
+        <p class="text-gray-600 mt-2">Seating for 500+ people, stage lighting and audio setup.</p><br>
+        <center><a href="/bookresources?resource_id=8"><button class="book-btn mt-4">Click</button></a></center>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-2xl transition duration-300 transform hover:scale-105">
+        <h3 class="text-xl font-boldtext-sky-900 mb-2">Seminar Hall</h3>
+        <p class="text-gray-600"><strong>Resource Id:</strong> 9</p>
+        <p class="text-gray-600"><strong>Type:</strong> Conference</p>
+        <p class="text-gray-600"><strong>Location:</strong> Block A - Floor 1</p>
+        <p class="text-gray-600 mt-2">Furnished with projector, audio system, and air conditioning.</p><br>
+        <center><a href="/bookresources?resource_id=9"><button class="book-btn mt-4">Click</button></a></center>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-gray-900 text-white py-4 text-center mt-10">
+    <p>© 2025 College Resource Booking System. All rights reserved.</p>
+    <p>ALAGAPPA UNIVERSITY</p>
+  </footer>
+
+<!-- <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const resourceId = params.get('resource_id');
+    if (resourceId) {
+      const select = document.getElementById('resourceSelect');
+      if (select) {
+        select.value = resourceId;
+      }
+    }
+  });
+</script> -->
+
+</body>
+
+
+</html>
